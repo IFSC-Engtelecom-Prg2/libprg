@@ -3,12 +3,35 @@
 //
 
 #include "munit.h"
+#include <unistd.h>
 
-void your_function(int foo, int bar) {
-    munit_assert_int(foo, ==, bar);
+MunitResult test1(const MunitParameter params[], void* user_data_or_fixture) {
+    munit_assert_int(2, ==, 2);
+    sleep(1);
+    return MUNIT_OK;
 }
 
-void main(void) {
+MunitTest testes[] = {
+        {
+            "/Teste1",
+            test1,
+            NULL,
+            NULL,
+            MUNIT_TEST_OPTION_NONE,
+            NULL
+        },
+        { NULL, NULL, NULL, NULL, MUNIT_TEST_OPTION_NONE, NULL }
+};
+
+static const MunitSuite suite = {
+        "/testes", /* name */
+        testes, /* tests */
+        NULL, /* suites */
+        1, /* iterations */
+        MUNIT_SUITE_OPTION_NONE /* options */
+};
+
+int main(int argc, char* argv[]) {
     /* Use µnit here. */
-    your_function(1,2);
+    return munit_suite_main(&suite, NULL, argc, argv);
 }
