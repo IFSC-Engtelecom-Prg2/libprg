@@ -25,7 +25,7 @@ target_include_directories(munit SYSTEM PUBLIC ${munit_SOURCE_DIR})
 # fim das coisas do munit
 
 add_subdirectory(libprg)
-add_executable(teste teste.c)
+add_executable(teste demo_test.c)
 target_link_libraries(teste munit)
 
 # https://cmake.org/cmake/help/book/mastering-cmake/chapter/Packaging%20With%20CPack.html

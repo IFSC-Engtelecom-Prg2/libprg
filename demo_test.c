@@ -11,7 +11,7 @@ define_test(test1) {
 }
 
 define_test(test2) {
-    assert_int(1, ==, 2);
+    assert_string_equal("blabla", "coisarada");
     return MUNIT_OK;
 }
 
@@ -20,5 +20,4 @@ create_suite(suite, testes, 2, test1, test2);
 int main(int argc, char* argv[]) {
     /* Use µnit here. */
     exec_tests(suite);
-//    return munit_suite_main(&suite, NULL, argc, argv);
 }
