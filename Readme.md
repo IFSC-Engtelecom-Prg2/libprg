@@ -1,3 +1,5 @@
+(_OBS_: para ver um guia sobre a criação de testes de unidade, veja [Testes.md](../Testes.md))
+
 # A minimal C library template using Modern CMake
 
 An example to demonstrate how to organize files for writing a library in the C language using Modern CMake.
