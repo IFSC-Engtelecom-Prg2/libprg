@@ -1,4 +1,4 @@
-(_OBS_: para ver um guia sobre a criação de testes de unidade, veja [Testes.md](../Testes.md))
+(_OBS_: para ver um guia sobre a criação de testes de unidade, veja [Testes.md](Testes.md))
 
 # A minimal C library template using Modern CMake
 
