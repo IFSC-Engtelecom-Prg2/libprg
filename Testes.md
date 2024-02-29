@@ -1,32 +1,33 @@
 # Como programar testes para sua biblioteca
 
-A biblioteca libprg será construída de forma a fornecer algumas estruturas de dados, incluindo suas operações e algoritmos essenciais. À medida que for sendo desenvolvida, é importante que o softweare possa ser testado e validado. Com isso, você saberá que sua implementação (provavelente) está correta.
+A biblioteca libprg será construída de forma a fornecer algumas estruturas de dados, incluindo suas operações e algoritmos essenciais. À medida que for sendo desenvolvida, é importante que o softweare possa ser testado e validado. Com isso, você saberá que sua implementação (provavelmente) está correta.
 
-Os testes podem ser criados usando a [biblioteca munit](https://nemequ.github.io/munit/), a qual está incluída aqui neste repositório (veja em CMakeLists.txt). Você pode tanto usá-la diretamente, com base em sua documentação, quanto por meio de alguns atalhos criados especificamente para este projeto. A seguir você pode ler uma explicação sobre como usá-la dessa forma mais simplificada. Para explorá-la com totos seus recursos, consulte sua [documentação](https://nemequ.github.io/munit/).
+Os testes podem ser criados usando a [biblioteca munit](https://nemequ.github.io/munit/), a qual está incluída aqui neste repositório (veja em CMakeLists.txt). Você pode tanto usá-la diretamente, com base em sua documentação, quanto por meio de alguns atalhos criados especificamente para este projeto. A seguir você pode ler uma explicação sobre como usá-la de forma mais simplificada. Para explorá-la com todos seus recursos, consulte sua [documentação](https://nemequ.github.io/munit/).
 
 **Sumário**:
 * [Testes de unidade](#testes-de-unidade)
 * [Testes com a biblioteca munit simplificada](#testes-com-a-biblioteca-munit-simplificada)
   * [Macros _assert_](#macros-assert)
   * [Suites de testes e executando testes](#suites-de-testes)
+  * [Exemplo](#exemplo)
 
 ## Testes de unidade
 
-Um teste de unidade verifica a menor unidade funcional do seu código. Em programas feitos usando a linguagem C, a menor unidade funcional é tipicamente uma função. Sendo assim, os testes de unidade possibilitam validar as funções que você criar em seu software.
+Um teste de unidade verifica a menor unidade funcional do seu código. Em programas feitos usando a linguagem C, a menor unidade funcional é tipicamente uma função. Sendo assim, os testes de unidade possibilitam validar as funções que você criou em seu software.
 
 Cada teste deve verificar se uma função funciona corretamente em determinada situação representativa. Por exemplo, se você escrever uma função que [limpa os espaços em excesso de uma string](https://moodle.ifsc.edu.br/mod/vpl/view.php?id=97022), os testes devem verificar o seguinte:
 * Se no caso de uma string vazia, a função nada faz
 * Se no caso de uma string que contenha somente espaços, ela resulta em uma string vazia
-* Se a string não contiver espaços em excesso, se a função não a modifica
-* Se a string tiver espaços no início, se a função os remove como esperado
-* Se a string tiver espaços no final, se a função os remove como esperado
-* Se a string tiver espaços em excesso entre palavras, se a função os converte para apenas um espaço entre cada par de palavras
+* Se a string não contiver espaços em excesso, a função não a modifica
+* Se a string tiver espaços no início, a função os remove como esperado
+* Se a string tiver espaços no final, a função os remove como esperado
+* Se a string tiver espaços em excesso entre palavras, a função os converte para apenas um espaço entre cada par de palavras
 
 Para cada uma dessas verificações, um teste específico pode ser criado. Assim, a validação da sua função pode ser feita com a execução desses testes.
 
 ## Testes com a biblioteca munit simplificada
 
-Na biblioteca munit, um teste é implementado em uma função. Essa função deve encapsular um algoritmo que realiza o teste desejado, e para isso algumas macros auxiliares da bibliotea munit devem ser utilizadas. Ao final, a função de teste deve retornar um valor que indica sucesso ou falha.
+Na biblioteca munit, um teste é implementado em uma função. Essa função deve encapsular um algoritmo que realiza o teste desejado, e para isso algumas macros auxiliares da biblioteca munit devem ser utilizadas. Ao final, a função de teste deve retornar um valor que indica sucesso ou falha.
 
 Antes de definir seus testes, seu programa de teste deve incluir o arquivo _testes.h_:
 
@@ -79,6 +80,18 @@ Error: child killed by signal 6 (Aborted)
 
 ### Macros assert
 
+As macros que comparam valores deum tipo de dados têm este formato:
+
+```c
+assert_tipo(val1, comparacao, val2)
+```
+
+... sendo _val1_ e _val2_ valores do _tipo_, e comparação um operador de comparação binária (==, !=, <, <=, >, >=). Por exemplo, para comparar se dois números inteiros são iguais, a macro _assert_int_ deve ser usada:
+
+```c
+assert_int(2, ==, 2)
+```
+
 As macros *assert_tipo* da biblioteca munit são estas (substitua _tipo_ por um dos tipos a seguir):
 * char
 * unsigned char ("uchar")
@@ -98,57 +111,57 @@ As macros *assert_tipo* da biblioteca munit são estas (substitua _tipo_ por um 
 Adicionalmente, a biblioteca disponibiliza algumas macros _assert_ mais especializadas:
 
 ```c 
-munit_assert_double_equal(double a, double b, int precision)
+assert_double_equal(double a, double b, int precision)
 ```
 Verifica que dois números double sejam iguais com tolerância de 1.0×10^precision. Por exemplo, 3.141592654 e 3.141592653589793 são considerados iguais com precisão 9, mas nçao com precisão 10.
 
 ```c
-munit_assert_string_equal(const char* a, const char* b)
+assert_string_equal(const char* a, const char* b)
 ```
 Verifica se duas strings são equivalentes (i.e., strcmp(a,b) == 0, e não a == b).
 
 ```c
-munit_assert_string_not_equal(const char* a, const char* b)
+assert_string_not_equal(const char* a, const char* b)
 ```
-Como munit_assert_string_equal, mas confere se não são equivalentes
+Como assert_string_equal, mas confere se não são equivalentes
 
 ```c
-munit_assert_memory_equal(size_t size, const void* a, const void* b)
+assert_memory_equal(size_t size, const void* a, const void* b)
 ```
 Confere se dois blocos de memória contêm os mesmos dados. Caso falhe, a mensagem de erro informa a posição do primeiro byte divergente.
 
 ```c
-munit_assert_memory_not_equal(size_t size, const void* a, const void* b)
+assert_memory_not_equal(size_t size, const void* a, const void* b)
 ```
 Confere se dois blocos de memória não contêm os mesmos dados.
 
 ```c
-munit_assert_ptr_equal(void* a, void* b)
+assert_ptr_equal(void* a, void* b)
 ```
-Outra forma de escrever _munit_assert_ptr(a, ==, b)_
+Outra forma de escrever _assert_ptr(a, ==, b)_
 
 ```c
-munit_assert_ptr_not_equal(void* a, void* b)
+assert_ptr_not_equal(void* a, void* b)
 ```
-Outra forma de escrever _munit_assert_ptr(a, !=, b)_
+Outra forma de escrever _assert_ptr(a, !=, b)_
 
 ```c
-munit_assert_null(const void* ptr)
+assert_null(const void* ptr)
 ```
-Outra forma de escrever _munit_assert_ptr(ptr, ==, NULL)_
+Outra forma de escrever _assert_ptr(ptr, ==, NULL)_
 
 ```c
-munit_assert_not_null(const void* ptr)
+assert_not_null(const void* ptr)
 ```
-Outra forma de escrever _munit_assert_ptr(ptr, !=, NULL)_
+Outra forma de escrever _assert_ptr(ptr, !=, NULL)_
 
 ```c
-munit_assert_true(bool value)
+assert_true(bool value)
 ```
 Verifica se o valor booleano é VERDADEIRO
 
 ```c
-munit_assert_false(bool value)
+assert_false(bool value)
 ```
 Verifica se o valor booleano é FALSO
 
@@ -179,3 +192,7 @@ int main(int argc, char* argv[]) {
     exec_tests(suite_soma);
 }
 ```
+
+### Exemplo
+
+Para ver um exemplo completo, leia o arquivo [demo_test.c](demo_test.c) !
