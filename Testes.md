@@ -1,11 +1,12 @@
 # Como programar testes para sua biblioteca
 
-A biblioteca libprg será construída de forma a fornecer algumas estruturas de dados, incluindo suas operações e algoritmos essenciais. À medida que for sendo desenvolvida, é importante que o softweare possa ser testado e validado. Com isso, você saberá que sua implementação (provavelmente) está correta.
+A biblioteca _libprg_ será construída de forma a fornecer algumas estruturas de dados, incluindo suas operações e algoritmos essenciais. À medida que for sendo desenvolvida, é importante que o softweare possa ser testado e validado. Com isso, você saberá que sua implementação (provavelmente) está correta.
 
-Os testes podem ser criados usando a [biblioteca munit](https://nemequ.github.io/munit/), a qual está incluída aqui neste repositório (veja em CMakeLists.txt). Você pode tanto usá-la diretamente, com base em sua documentação, quanto por meio de alguns atalhos criados especificamente para este projeto. A seguir você pode ler uma explicação sobre como usá-la de forma mais simplificada. Para explorá-la com todos seus recursos, consulte sua [documentação](https://nemequ.github.io/munit/).
+Os testes podem ser criados usando a [biblioteca munit](https://nemequ.github.io/munit/), a qual está incluída aqui neste repositório (veja em _tests/CMakeLists.txt_). Você pode tanto usá-la diretamente, com base em sua documentação, quanto por meio de alguns atalhos criados especificamente para este projeto. A seguir você pode ler uma explicação sobre como usá-la de forma mais simplificada. Para explorá-la com todos seus recursos, consulte sua [documentação](https://nemequ.github.io/munit/).
 
 **Sumário**:
 * [Testes de unidade](#testes-de-unidade)
+* [Adicionando testes ao projeto](#adicionando-testes-ao-seu-projeto-da-libprg)
 * [Testes com a biblioteca munit simplificada](#testes-com-a-biblioteca-munit-simplificada)
   * [Macros _assert_](#macros-assert)
   * [Suites de testes e executando testes](#suites-de-testes)
