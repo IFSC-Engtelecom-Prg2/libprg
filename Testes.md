@@ -80,13 +80,13 @@ Error: child killed by signal 6 (Aborted)
 
 ### Macros assert
 
-As macros que comparam valores deum tipo de dados têm este formato:
+As macros que comparam valores de um tipo de dados têm este formato:
 
 ```c
-assert_tipo(val1, comparacao, val2)
+assert_tipo(val1, op_comparacao, val2)
 ```
 
-... sendo _val1_ e _val2_ valores do _tipo_, e comparação um operador de comparação binária (==, !=, <, <=, >, >=). Por exemplo, para comparar se dois números inteiros são iguais, a macro _assert_int_ deve ser usada:
+... sendo _val1_ e _val2_ valores do _tipo_, e _op_comparação_ um operador de comparação binária (==, !=, <, <=, >, >=). Por exemplo, para comparar se dois números inteiros são iguais, a macro _assert_int_ deve ser usada:
 
 ```c
 assert_int(2, ==, 2)
