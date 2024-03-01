@@ -19,19 +19,9 @@ add_library(munit ${munit_SOURCE_DIR}/munit.c)
 target_include_directories(munit SYSTEM PUBLIC ${munit_SOURCE_DIR})
 # fim das coisas do munit
 
-#add_subdirectory(libprg)
 include_directories(libprg/src/include)
 
 add_executable(teste demo_test.c)
 target_link_libraries(teste munit libprg)
 
-# https://cmake.org/cmake/help/book/mastering-cmake/chapter/Packaging%20With%20CPack.html
-#set(CPACK_PROJECT_NAME ${PROJECT_NAME})
-#set(CPACK_PROJECT_VERSION ${PROJECT_VERSION})
-#include(CPack)
-#
-#if(CMAKE_PROJECT_NAME STREQUAL PROJECT_NAME)
-#  # For IDEs indexing
-#  set_property(GLOBAL PROPERTY USE_FOLDERS ON)
-#endif()
 
