@@ -4,6 +4,7 @@
 
 #include "testes.h"
 #include <unistd.h>
+#include "libprg/libprg.h"
 
 define_test(test1) {
     assert_int(2, ==, 2);
@@ -20,9 +21,9 @@ int soma(int x, int y) {
 }
 
 define_test(teste_soma) {
-    int z = soma(1, 1);
+    result_t z = compute(1, 1, SUM);
 
-    assert_int(z, ==, 2);
+    assert_double(z.value, ==, 2);
 
     return MUNIT_OK;
 }

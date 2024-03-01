@@ -25,6 +25,28 @@ Cada teste deve verificar se uma função funciona corretamente em determinada s
 
 Para cada uma dessas verificações, um teste específico pode ser criado. Assim, a validação da sua função pode ser feita com a execução desses testes.
 
+## Adicionando testes ao seu projeto da libprg
+
+Os testes da biblioteca libprg devem ser adicionados à pasta _tests_. A estrutura dessa pasta inicialmente é esta:
+
+```bash
+tests
+|-- CMakeLists.txt
+|-- testes.h
+|-- demo_test.c
+```
+
+Cada conjunto de testes deve ficar em um arquivo _.c_ específico. Assim, você pode criar seus testes para cada estrutura de dados ou algoritmo, e depois executá-los. No exemplo, o arquivo demo_test.c mostra como alguns testes podem ser criados (ver mais detalhes nas próximas seções). Com isso, testes poderão ser executados de forma independente, para que você consiga verificar o progresso de sua implementação da _libprg_.
+
+Ao adicionar um novo conjunto de testes, você deve acrescentar o seguinte a ao arquivo _tests/CMakeLists.txt_:
+
+```cmake
+add_executable(nome_do_teste arquivo_que_implementa_o_teste.c)
+target_link_libraries(nome_do_teste munit libprg)
+```
+
+Em seguida, recarregue o arquivo _CMakeLists.txt_ da raiz do projeto. Se estiver usando o CLion, você verá que uma nova configuração de execução com o nome do seu novo teste.
+
 ## Testes com a biblioteca munit simplificada
 
 Na biblioteca munit, cada teste é implementado por meio de uma função. Essa função deve encapsular um algoritmo que realiza o teste desejado, e para isso algumas macros auxiliares da biblioteca munit devem ser utilizadas. Ao final, a função de teste deve retornar um valor que indica sucesso ou falha.
@@ -195,4 +217,4 @@ int main(int argc, char* argv[]) {
 
 ### Exemplo
 
-Para ver um exemplo completo, leia o arquivo [demo_test.c](demo_test.c) !
+Para ver um exemplo completo, leia o arquivo [demo_test.c](tests/demo_test.c) !
