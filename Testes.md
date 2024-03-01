@@ -27,7 +27,7 @@ Para cada uma dessas verificações, um teste específico pode ser criado. Assim
 
 ## Testes com a biblioteca munit simplificada
 
-Na biblioteca munit, um teste é implementado em uma função. Essa função deve encapsular um algoritmo que realiza o teste desejado, e para isso algumas macros auxiliares da biblioteca munit devem ser utilizadas. Ao final, a função de teste deve retornar um valor que indica sucesso ou falha.
+Na biblioteca munit, cada teste é implementado por meio de uma função. Essa função deve encapsular um algoritmo que realiza o teste desejado, e para isso algumas macros auxiliares da biblioteca munit devem ser utilizadas. Ao final, a função de teste deve retornar um valor que indica sucesso ou falha.
 
 Antes de definir seus testes, seu programa de teste deve incluir o arquivo _testes.h_:
 
@@ -62,7 +62,7 @@ define_test(teste_soma) {
 }
 ```
 
-A macro _assert_int_ faz uma comparação entre dois números inteiros. No caso, a comparação a ser feita é de igualdade. Se a verificação estiver correta, a macro nada faz. Mas, se estiver errada, ela causa o retorna da função de teste com resultado MUNIT_FAIL, além de mostrar uma breve explicação sobre a falha. Por exemplo, imagine que a função de _soma_ fosse esta:
+A macro _assert_int_ faz uma comparação entre dois números inteiros. No caso, a comparação a ser feita é de igualdade. Se a verificação estiver correta, a macro nada faz. Mas, se estiver errada, ela causa o retorno da função de teste com resultado MUNIT_FAIL, além de mostrar uma breve explicação sobre a falha. Por exemplo, imagine que a função de _soma_ fosse esta:
 
 ```c
 int soma(int x, int y) {
