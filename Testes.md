@@ -66,14 +66,14 @@ define_test(nome_do_teste) {
 }
 ```
 
-A função de teste deve ser definida com a macro _define_test_, passando como parâmetro um nome de teste à sua escolha. Essa macro apenas define uma função de teste conforme exigido pela biblioteca munit, ocultando detalhes como parâmetros e tipo de dados do resultado, os quais não são relevantes nessa forma simplificada de uso dessa biblioteca.
+A função de teste deve ser definida com a macro _define_test_, passando como parâmetro um nome de teste à sua escolha. Essa macro apenas define uma função de teste conforme exigido pela biblioteca munit, ocultando detalhes tais como parâmetros e tipo de dados do resultado, os quais não são relevantes nessa forma simplificada de uso dessa biblioteca.
 
 O teste definido acima nada faz, pois ele apenas retorna o valor MUNIT_OK, que significa que o teste deu certo. Outros possíveis valores a retornar são:
 * **MUNIT_FAIL**: o teste falhou
 * **MUNIT_SKIP**: o teste foi ignorado por alguma razão (a seu critério), e não será contabilizado como sucesso ou falha
 * **MUNIT_ERROR**: ocorreu um erro no código do próprio teste, e não na função que ele deveria testar. Por exemplo, imagine que o teste precise baixar um arquivo da rede, mas não conseguiu conectar no servidor. Nesse caso, o problema não foi na função a ser testada, e sim no teste.
 
-As verificações que sua função de teste deve realizar devem explorar um conjunto de macros disponibilizado pela biblioteca munit. Essas macros, com prefixo *assert_*, possibilitam verificar valores de diferentes tipos, tais como inteiros, float, char, string, ponteiros, entre outras coisas. Por exemplo, imagine que sua função de teste queira conferir se uma função de soma fornece o resultado correto:
+As verificações que sua função de teste deve realizar devem explorar um conjunto de macros disponibilizadas pela biblioteca munit. Essas macros, com prefixo *assert_*, possibilitam verificar valores de diferentes tipos, tais como inteiros, float, char, string, ponteiros, entre outras coisas. Por exemplo, imagine que sua função de teste queira conferir se uma função de soma fornece o resultado correto:
 
 ```c
 define_test(teste_soma) {
@@ -197,10 +197,10 @@ create_suite(nome_var, nome_suite, numero_de_testes, teste1, teste2, ...);
 ```
 
 Os parâmetros de _create_suite_ são:
-* _suite_var_: onome de uma variável que representa a suite. Essa variável será criada pela própria macro, então não se preocupe em declará-la, nem com qual é seu tipo.
-* _nome_suite_: um nome que deve ser dado a essa suite. Esse nme será mosytrado no relatório de execução dos testes.
+* _suite_var_: o nome de uma variável que representa a suite. Essa variável será criada pela própria macro, então não se preocupe em declará-la, nem com qual é seu tipo.
+* _nome_suite_: um nome que deve ser dado a essa suite. Esse nome será mostrado no relatório de execução dos testes.
 * _numero_de_testes_: a quantidade testes que compõem esta suite
-* _teste1, teste2, ...._: as funções de teste que foram criacdas previamente. A quantidade de funções de teste deve ser igual ao parâmetro _numero_de_testes_.
+* _teste1, teste2, ...._: as funções de teste que foram criadas previamente. A quantidade de funções de teste deve ser igual ao parâmetro _numero_de_testes_.
 
 Ex: para criar uma suite que contém apenas um teste, deve-se fazer assim:
 
