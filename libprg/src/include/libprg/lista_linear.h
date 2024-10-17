@@ -1,6 +1,8 @@
 #ifndef LISTA_LINEAR_H
 #define LISTA_LINEAR_H
 
+#include <stdint.h>
+
 typedef struct {
     // atributos da lista_linear linear
     char* * area; // um vetor de ponteiros do tipo char*

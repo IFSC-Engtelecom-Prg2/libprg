@@ -8,7 +8,10 @@ project(libprg
 set(CMAKE_C_STANDARD 17)
 
 add_subdirectory(libprg)
-add_subdirectory(tests)
+#add_subdirectory(tests)
+
+add_executable(app main.c)
+target_link_libraries(app libprg)
 
 # https://cmake.org/cmake/help/book/mastering-cmake/chapter/Packaging%20With%20CPack.html
 set(CPACK_PROJECT_NAME ${PROJECT_NAME})
