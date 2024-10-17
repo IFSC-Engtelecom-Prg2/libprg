@@ -1,15 +1,9 @@
 #ifndef LIBPRG_LIBPRG_H
 #define LIBPRG_LIBPRG_H
 
-typedef struct {
-    double value;
-    int error;
-} result_t;
+// para cada nova estrutura de dados, inclua aqui seu respectivo arquivo de cabeçalho
+// como exemplo, veja que o arquivo .h da lista sequencial já está incluído
 
-typedef enum { SUM, SUB } operation_t;
-
-result_t sub(double a, double b);
-result_t sum(double a, double b);
-result_t compute(double a, double b, operation_t op);
+#include <libprg/lista_linear.h>
 
 #endif
