@@ -9,6 +9,7 @@ An example to demonstrate how to organize files for writing a library in the C l
 ```bash
 .
 |-- CMakeLists.txt
+|-- main.c
 |-- LICENSE
 |-- Readme.md
 `-- libprg
@@ -17,10 +18,9 @@ An example to demonstrate how to organize files for writing a library in the C l
         |-- include
         |   `-- libprg
         |       `-- libprg.h
+        |        -- lista_linear.h
         `-- libprg
-            |-- libprg.c
-            |-- sub.c
-            `-- sum.c
+            `-- lista_linear.c
 ```
 
 ## How to use this library in a C application using CMake
@@ -39,7 +39,7 @@ include(FetchContent)
 
 FetchContent_Declare(
     libprg
-    GIT_REPOSITORY https://github.com/emersonmello/libprg.git
+    GIT_REPOSITORY https://github.com/IFSC-Engtelecom-Prg2/libprg.git
     GIT_TAG origin/main 
     # or GIT_TAG 0.0.1
     
@@ -60,10 +60,17 @@ And your `main.c`  should look like this:
 #include <libprg/libprg.h>
 
 int main(void) {
-    int a = 1, b = 2;
+    lista_linear_t * lista = lista_linear_cria();
 
-    result_t r = compute(a, b, SUM);
-    printf("%d + %d = %8.2f", a, b, r.value);
+    lista_linear_adiciona(lista, "um");
+    lista_linear_adiciona(lista, "teste");
+    lista_linear_adiciona(lista, "simples");
+
+    for (int j=0; j < lista_linear_comprimento(); j++) {
+      printf("lista[%d] = %s\n", j, lista_linear_obtem(lista, j);
+    }
+
+    lista_linear_destroi(lista);
 
     return 0;
 }
